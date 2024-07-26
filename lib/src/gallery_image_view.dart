@@ -30,7 +30,10 @@ class GalleryImageView extends StatelessWidget {
   /// Text color
   final Color textColor;
 
-  const GalleryImageView(
+  /// Text shadow
+  final List<Shadow>? textShadow;
+
+   GalleryImageView(
       {Key? key,
       required this.listImage,
       this.boxFit = BoxFit.cover,
@@ -40,8 +43,9 @@ class GalleryImageView extends StatelessWidget {
       this.galleryType = 0,
       this.shortImage = true,
       this.fontSize = 32,
-      this.textColor = Colors.white})
-      : super(key: key);
+      this.textColor = Colors.white,  this.textShadow}){
+        
+      }
 
   @override
   Widget build(BuildContext context) {
@@ -51,14 +55,11 @@ class GalleryImageView extends StatelessWidget {
     /// The gallery type was sent, call _uiImage on the gallery type sent.
     if (galleryType == 0) {
       if (listImage.length >= 2 && listImage.length < 5) {
-        return SizedBox(
-            width: width, height: height, child: _uiImage2(context));
+        return SizedBox(width: width, height: height, child: _uiImage2(context));
       } else if (listImage.length >= 5) {
-        return SizedBox(
-            width: width, height: height, child: _uiImage3(context));
+        return SizedBox(width: width, height: height, child: _uiImage3(context));
       } else {
-        return SizedBox(
-            width: width, height: height, child: _uiImage1(context));
+        return SizedBox(width: width, height: height, child: _uiImage1(context));
       }
     } else if (galleryType == 2) {
       return SizedBox(width: width, height: height, child: _uiImage2(context));
@@ -92,8 +93,7 @@ class GalleryImageView extends StatelessWidget {
                     color: Colors.transparent,
                     child: InkWell(
                       onTap: () {
-                        MultiImageProvider multiImageProvider =
-                            MultiImageProvider(listImage, initialIndex: i);
+                        MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: i);
                         showImageViewerPager(context, multiImageProvider,
                             backgroundColor: Colors.black.withOpacity(0.3));
                       },
@@ -101,10 +101,7 @@ class GalleryImageView extends StatelessWidget {
                         alignment: Alignment.center,
                         child: Text(
                           i == 3 ? "+$imgMore" : "",
-                          style: TextStyle(
-                              color: textColor,
-                              fontSize: fontSize,
-                              shadows: textShadow),
+                          style: TextStyle(color: textColor, fontSize: fontSize, shadows: textShadow),
                         ),
                       ),
                     ),
@@ -135,10 +132,8 @@ class GalleryImageView extends StatelessWidget {
                   color: Colors.transparent,
                   child: InkWell(
                     onTap: () {
-                      MultiImageProvider multiImageProvider =
-                          MultiImageProvider(listImage, initialIndex: i);
-                      showImageViewerPager(context, multiImageProvider,
-                          backgroundColor: Colors.black.withOpacity(0.3));
+                      MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: i);
+                      showImageViewerPager(context, multiImageProvider, backgroundColor: Colors.black.withOpacity(0.3));
                     },
                   ),
                 ),
@@ -171,10 +166,8 @@ class GalleryImageView extends StatelessWidget {
                   color: Colors.transparent,
                   child: InkWell(
                     onTap: () {
-                      MultiImageProvider multiImageProvider =
-                          MultiImageProvider(listImage, initialIndex: 0);
-                      showImageViewerPager(context, multiImageProvider,
-                          backgroundColor: Colors.black.withOpacity(0.3));
+                      MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: 0);
+                      showImageViewerPager(context, multiImageProvider, backgroundColor: Colors.black.withOpacity(0.3));
                     },
                   ),
                 ),
@@ -201,21 +194,15 @@ class GalleryImageView extends StatelessWidget {
                           color: Colors.transparent,
                           child: InkWell(
                             onTap: () {
-                              MultiImageProvider multiImageProvider =
-                                  MultiImageProvider(listImage,
-                                      initialIndex: i);
+                              MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: i);
                               showImageViewerPager(context, multiImageProvider,
-                                  backgroundColor:
-                                      Colors.black.withOpacity(0.3));
+                                  backgroundColor: Colors.black.withOpacity(0.3));
                             },
                             child: Align(
                               alignment: Alignment.center,
                               child: Text(
                                 i == 3 ? "+$imgMore" : "",
-                                style: TextStyle(
-                                    color: textColor,
-                                    fontSize: fontSize,
-                                    shadows: textShadow),
+                                style: TextStyle(color: textColor, fontSize: fontSize, shadows: textShadow),
                               ),
                             ),
                           ),
@@ -248,10 +235,8 @@ class GalleryImageView extends StatelessWidget {
                   color: Colors.transparent,
                   child: InkWell(
                     onTap: () {
-                      MultiImageProvider multiImageProvider =
-                          MultiImageProvider(listImage, initialIndex: 0);
-                      showImageViewerPager(context, multiImageProvider,
-                          backgroundColor: Colors.black.withOpacity(0.3));
+                      MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: 0);
+                      showImageViewerPager(context, multiImageProvider, backgroundColor: Colors.black.withOpacity(0.3));
                     },
                   )),
             ),
@@ -277,8 +262,7 @@ class GalleryImageView extends StatelessWidget {
                         color: Colors.transparent,
                         child: InkWell(
                           onTap: () {
-                            MultiImageProvider multiImageProvider =
-                                MultiImageProvider(listImage, initialIndex: i);
+                            MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: i);
                             showImageViewerPager(context, multiImageProvider,
                                 backgroundColor: Colors.black.withOpacity(0.3));
                           },
@@ -316,10 +300,8 @@ class GalleryImageView extends StatelessWidget {
                   color: Colors.transparent,
                   child: InkWell(
                     onTap: () {
-                      MultiImageProvider multiImageProvider =
-                          MultiImageProvider(listImage, initialIndex: 0);
-                      showImageViewerPager(context, multiImageProvider,
-                          backgroundColor: Colors.black.withOpacity(0.3));
+                      MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: 0);
+                      showImageViewerPager(context, multiImageProvider, backgroundColor: Colors.black.withOpacity(0.3));
                     },
                   ),
                 ),
@@ -335,8 +317,7 @@ class GalleryImageView extends StatelessWidget {
                       decoration: imageDecoration,
                       child: Container(
                         decoration: BoxDecoration(
-                          image:
-                              DecorationImage(image: listImage[i], fit: boxFit),
+                          image: DecorationImage(image: listImage[i], fit: boxFit),
                         ),
                         width: double.infinity,
                         height: double.infinity,
@@ -344,21 +325,15 @@ class GalleryImageView extends StatelessWidget {
                           color: Colors.transparent,
                           child: InkWell(
                             onTap: () {
-                              MultiImageProvider multiImageProvider =
-                                  MultiImageProvider(listImage,
-                                      initialIndex: i);
+                              MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: i);
                               showImageViewerPager(context, multiImageProvider,
-                                  backgroundColor:
-                                      Colors.black.withOpacity(0.3));
+                                  backgroundColor: Colors.black.withOpacity(0.3));
                             },
                             child: Align(
                               alignment: Alignment.center,
                               child: Text(
                                 i == 3 ? "+$imgMore" : "",
-                                style: TextStyle(
-                                    color: textColor,
-                                    fontSize: fontSize,
-                                    shadows: textShadow),
+                                style: TextStyle(color: textColor, fontSize: fontSize, shadows: textShadow),
                               ),
                             ),
                           ),
@@ -391,10 +366,8 @@ class GalleryImageView extends StatelessWidget {
                 color: Colors.transparent,
                 child: InkWell(
                   onTap: () {
-                    MultiImageProvider multiImageProvider =
-                        MultiImageProvider(listImage, initialIndex: 0);
-                    showImageViewerPager(context, multiImageProvider,
-                        backgroundColor: Colors.black.withOpacity(0.3));
+                    MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: 0);
+                    showImageViewerPager(context, multiImageProvider, backgroundColor: Colors.black.withOpacity(0.3));
                   },
                 ),
               ),
@@ -421,8 +394,7 @@ class GalleryImageView extends StatelessWidget {
                         color: Colors.transparent,
                         child: InkWell(
                           onTap: () {
-                            MultiImageProvider multiImageProvider =
-                                MultiImageProvider(listImage, initialIndex: i);
+                            MultiImageProvider multiImageProvider = MultiImageProvider(listImage, initialIndex: i);
                             showImageViewerPager(context, multiImageProvider,
                                 backgroundColor: Colors.black.withOpacity(0.3));
                           },
@@ -438,10 +410,3 @@ class GalleryImageView extends StatelessWidget {
     );
   }
 }
-
-const textShadow = <Shadow>[
-  Shadow(offset: Offset(-2.0, 0.0), blurRadius: 4.0, color: Colors.black54),
-  Shadow(offset: Offset(0.0, 2.0), blurRadius: 4.0, color: Colors.black54),
-  Shadow(offset: Offset(2.0, 0.0), blurRadius: 4.0, color: Colors.black54),
-  Shadow(offset: Offset(0.0, -2.0), blurRadius: 4.0, color: Colors.black54),
-];
